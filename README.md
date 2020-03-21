@@ -37,7 +37,7 @@ In `composer.json`:
 
 ## Usage
 
-1. Create `config.php` file.
+1. Create `config.php` file, set up right `VENDOR_PATH` and `$Config`.
 2. Create CRON job to run `run-backup.php` file.
 
 
