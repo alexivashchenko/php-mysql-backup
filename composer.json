@@ -1,0 +1,29 @@
+{
+    "name": "alexivashchenko/php-mysql-backup",
+    "version": "0.1",
+    "description": "Simple PHP class to create regular MySQL database backups",
+    "type": "library",
+    "keywords": [
+        "php",
+        "mysql",
+        "backup"
+    ],
+    "require": {
+        "ifsnop/mysqldump-php": "^2.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lexivashchenko",
+            "email": "lex.ivashchenko@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ali\\": "inc/Ali/"
+        }
+    },
+    "config": {
+        "vendor-dir": "inc/vendor"
+    }
+}
