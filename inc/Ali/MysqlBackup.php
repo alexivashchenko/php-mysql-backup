@@ -1,7 +1,7 @@
 <?php
 
 // Created: 2020/03/21 20:56:23
-// Last modified: 2020/03/21 22:10:14
+// Last modified: 2021/01/15 11:03:59
 
 // Developer: Alexander Ivashchenko
 // Site: http://ivashchenko.in.ua/
@@ -65,7 +65,7 @@ class MysqlBackup
 
 	public function backupFile()
 	{
-		return $this->storage_path . $this->project_name . '-' . $this->db['name'] . '-[' . date($this->date_format, $this->time) . ']'.$this->file_extension;
+		return $this->storage_path . $this->project_name . '-' . $this->db['name'] . '-[' . date($this->date_format, $this->time) . ']' . $this->file_extension;
 	}
 
 
@@ -90,7 +90,8 @@ class MysqlBackup
 
 
 
-	public function removeOldArchives($files){
+	public function removeOldArchives($files)
+	{
 		$removed_files = [];
 		foreach ($files as $file_to_remove) {
 			if (unlink($this->storage_path . $file_to_remove)) {
@@ -117,7 +118,10 @@ class MysqlBackup
 
 		ksort($files);
 
-		$files_to_remove = array_slice($files, 0, (count($files) - $this->total_archives), true);
+		$files_to_remove = [];
+        if (count($files) > $this->total_archives) {
+            $files_to_remove = array_slice($files, 0, (count($files) - $this->total_archives), true);
+        }
 
 		return [
 			'actual' => array_values(array_diff($all_files, $files_to_remove)),
